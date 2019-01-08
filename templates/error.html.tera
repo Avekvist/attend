@@ -1,0 +1,16 @@
+{% extends "base" %}
+
+{% block title %}
+Error {{ error_code }}
+{% endblock title %}
+
+{% block header %}
+    <h1>Error</h1>
+{% endblock header %}
+
+{% block content %}
+    <section>
+        <h1>Error code: {{ error_code }}</h1>
+        <br><p>{{ error }}</p>
+    </section>
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% extends "base" %}
+
+{% block title %}
+Hem
+{% endblock title %}
+
+{% block header %}
+    <h1>Attend</h1>
+{% endblock header %}
+
+{% block content %}
+    {% for attendance in data.attendances %}
+        <a href="/attendance/{{ attendance }}" class="attendance-anchors">{{ attendance }}</a>
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends "base" %}
+
+{% block title %}
+Taggar
+{% endblock title %}
+
+{% block header %}
+    <h1>Taggar</h1>
+{% endblock header %}
+
+{% block content %}
+    <section>
+        <h1>Taggar</h1>
+        {% for tag in data.tags %}
+            <hr><a href="/tags/{{ tag }}">{{ tag }}</a>
+        {% endfor %}
+    </section>
+{% endblock content %}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang='sv'>
+    <head>
+        <meta charset='utf-8' />
+        <meta name='description' content='Whatever' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+        <title>{% block title %}{% endblock title %} - Attend</title>
+        
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Oxygen+Mono' />
+        <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    </head>
+    <body>
+        <div id="container">
+            <header>
+                {% block header %}
+                {% endblock header %}
+            </header>
+            <nav>
+                <nav id="navbar">
+                    {% if logged_in %}
+                        <a href="/">Hem</a>
+                        <a href="/attendance">Närvaro</a>
+                        <a href="/students">Elever</a>
+                        <a href="/classes">Kurser</a>
+                        <a href="/tags">Taggar</a>
+                        <a href="/support">Support</a>
+                        <a href="/logout">Logga ut</a>
+                    {% else %}
+                        <a href="/login">Logga in</a>
+                        <a href="/create">Skapa konto</a>
+                        <a href="/support">Support</a>
+                    {% endif %}
+                </nav>
+
+                <div id="handle">Menu</div>
+            </nav>
+
+            <main>
+                {% block content %}
+                {% endblock content %}
+            </main>
+
+            <footer>
+                <p>&copy; Avekvist 2018
+            </footer>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="/js/navigation_button.js"></script>
+    </body>
+</html>

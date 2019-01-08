@@ -1,0 +1,23 @@
+[global.databases]
+attend = { url = "mysql://attend:attend@192.168.1.234/attend" }
+
+[development]
+address = "192.168.1.119"
+port = 8000
+keep_alive = 5
+log = "normal"
+limits = { forms = 32768 }
+
+[staging]
+address = "192.168.1.119"
+port = 80
+keep_alive = 5
+log = "normal"
+limits = { forms = 32768 }
+
+[production]
+address = "192.168.30.12"
+port = 80
+keep_alive = 5
+log = "critical"
+limits = { forms = 32768 }

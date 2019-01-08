@@ -1,0 +1,17 @@
+{% extends "base" %}
+
+{% block title %}
+Elever
+{% endblock title %}
+
+{% block header %}
+    <h1>{{ student.1 }}</h1>
+{% endblock header %}
+
+{% block content %}
+    <section>
+        {% for class in data.classes %}
+                <a href="/classes/{{ class.0 }}">{{ class.1 }}</a>
+        {% endfor %}
+    </section>
+{% endblock content %}

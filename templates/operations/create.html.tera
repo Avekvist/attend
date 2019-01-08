@@ -1,0 +1,24 @@
+{% extends "base" %}
+
+{% block title %}
+Skapa konto
+{% endblock title %}
+
+{% block header %}
+    <h1>Skapa konto</h1>
+{% endblock header %}
+
+{% block content %}
+    <section>
+        {% if data.show_flash %}
+            <p>{{ data.flash_result }}</p>
+        {% endif %}
+        
+        <form method='post' action='/process_create'>
+            <p>Namn: <br><input type='text' name='teacher_name' /></p>
+            <p>Användarnamn: <br><input type='text' name='username' /></p>
+            <p>Lösenord: <br><input type='password' name='password' /></p>
+            <input type='submit' value='Logga in' />
+        </form>
+    </section>
+{% endblock content %}

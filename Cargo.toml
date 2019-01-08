@@ -1,0 +1,6 @@
+[workspace]
+
+members = [
+    "attend",
+    "attend_schedule_interpreter",
+]

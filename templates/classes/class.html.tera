@@ -1,0 +1,17 @@
+{% extends "base" %}
+
+{% block title %}
+Kurs {{ data.class.1 }}
+{% endblock title %}
+
+{% block header %}
+    <h1>Kurs {{ data.class.1 }}</h1>
+{% endblock header %}
+
+{% block content %}
+    <section>
+        {% for class in data.classes %}
+            <hr><a href="/classes/{{ class.0 }}">{{ class.1 }}</a>
+        {% endfor %}
+    </section>
+{% endblock content %}

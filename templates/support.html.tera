@@ -1,0 +1,19 @@
+{% extends "base" %}
+
+{% block title %}
+Support
+{% endblock title %}
+
+{% block header %}
+    <h1>Support</h1>
+{% endblock header %}
+
+{% block content %}
+    <section>
+        <form method='post' action='/process_inquiry'>
+            <p>E-post: <br><input type='text' name='username' /></p>
+            <p>Fråga: <br><textarea name="inquiry" cols="20" rows="5"></textarea></p>
+            <input type='submit' value='Logga in' />
+        </form>
+    </section>
+{% endblock content %}

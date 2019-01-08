@@ -1,0 +1,17 @@
+{% extends "base" %}
+
+{% block title %}
+Närvaro
+{% endblock title %}
+
+{% block header %}
+    <h1>Närvaro</h1>
+{% endblock header %}
+
+{% block content %}
+    <section>
+        {% for attendance in data.attendances %}
+                <a href="/attendance/{{ attendance }}">{{ attendance }}</a>
+        {% endfor %}
+    </section>
+{% endblock content %}

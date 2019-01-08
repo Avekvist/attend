@@ -1,0 +1,20 @@
+{% extends "base" %}
+
+{% block title %}
+Tagg {{ data.tag }}
+{% endblock title %}
+
+{% block header %}
+    <h1>Taggar</h1>
+{% endblock header %}
+
+{% block content %}
+    <section>
+        <h1>Tagg {{ data.tag }}</h1>
+        <form method='post' action='/process_create_attendee'>
+            <p>Tagg: <br><input type='text' name='tag_id' value='{{ data.tag }}' /></p>
+            <p>Namn: <br><input type='text' name='attendee_name' /></p>
+            <input type='submit' value='Lägg till' />
+        </form>
+    </section>
+{% endblock content %}

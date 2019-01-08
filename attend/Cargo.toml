@@ -1,0 +1,27 @@
+[package]
+name = "attend"
+version = "0.1.0"
+authors = ["Hampus Avekvist <hampus@avekvist.com>"]
+edition = "2018"
+
+[dependencies]
+rocket = "0.4.0"
+rocket_codegen = "0.4.0"
+serde = "1.0.82"
+serde_derive = "1.0.82"
+dotenv = "0.13.0"
+attend_schedule_interpreter = { path = "../attend_schedule_interpreter" }
+chrono = "0.4"
+
+[dependencies.diesel]
+version = "1.3.3"
+default-features = false
+features = [ "mysql", "chrono" ]
+
+[dependencies.rocket_contrib]
+version = "0.4.0"
+default-features = true
+features = [ "tera_templates", "diesel_mysql_pool" ]
+
+[target.'cfg(not(target_arch="arm"))'.dependencies]
+argonautica = { version = "0.1.5", features = [ "serde", "simd" ] }
