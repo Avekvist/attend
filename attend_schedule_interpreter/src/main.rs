@@ -2,7 +2,7 @@ use select::document::Document;
 use select::predicate::Name;
 
 fn main() {
-    schedule("https://news.ycombinator.com");
+    schedule("https://google.com");
     //schedule("https://web.skola24.se/timetable/timetable-viewer/kunskapsforbundetvast.skola24.se/Kunskapsf%C3%B6rbundet%20Gy/signatures/1196/");
 }
 
@@ -26,7 +26,8 @@ fn schedule(url: &str) {
     }
 }
 
-/*use std::fs::File;
+/*
+use std::fs::File;
 use std::io::prelude::*;
 
 fn main() {
@@ -57,13 +58,13 @@ use std::process::Command;
 fn main() {
     let output = if cfg!(target_os = "windows") {
         Command::new("cmd")
-                .args(&["/C", "curl localhost/bah.php"])
+                .args(&["/C", "curl https://www.google.com/"])
                 .output()
                 .expect("Failed to execute process. ")
     } else {
         Command::new("sh")
         .arg("-c")
-        .arg("curl localhost/bah.php")
+        .arg("curl https://www.google.com/")
         .output()
         .expect("Failed to execute process. ")
     };
