@@ -29,7 +29,7 @@ const char *password[2] = { "tekniklabbet", "EB339ADAA0" };
 const char *tryText[2] = { "in School", "at Home" };
 
 const char *host = "192.168.30.12";
-const char *requestDestination = "http://192.168.30.12/~attend/operations/handleTag.php";
+const char *requestDestination = "http://192.168.30.12:8000/handle_tag";
 
 enum {
   RST_PIN = 0,
