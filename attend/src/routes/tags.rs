@@ -1,12 +1,12 @@
-use rocket_contrib::templates::Template;
+use rocket::response::{ Flash, Redirect };
 use crate::models::teacher::TeacherCookie;
-use rocket::response::Redirect;
+use rocket_contrib::templates::Template;
 use std::collections::HashMap;
 use crate::AttendDatabase;
 use super::Context;
 
 #[get("/tags")]
-pub fn authenticated(conn: AttendDatabase, _teacher: TeacherCookie) -> Template {
+pub fn list_authenticated(conn: AttendDatabase, _teacher: TeacherCookie) -> Template {
     use diesel::prelude::*;
     use crate::schema::tag::dsl as tag_dsl;
     use crate::schema::attendee::dsl as attendee_dsl;
@@ -19,7 +19,7 @@ pub fn authenticated(conn: AttendDatabase, _teacher: TeacherCookie) -> Template 
     let attendee_results = &attendee_dsl::attendee
         .load::<Attendee>(&*conn)
         .expect("Couldn't access attendees");
-    
+
     let results: Vec<_> = tag_results.into_iter().filter(|tag| {
         let mut success = true;
 
@@ -46,24 +46,55 @@ pub fn authenticated(conn: AttendDatabase, _teacher: TeacherCookie) -> Template 
 }
 
 #[get("/tags", rank = 2)]
-pub fn unauthenticated() -> Redirect {
+pub fn list_unauthenticated() -> Redirect {
     Redirect::to("/login")
 }
 
 #[get("/tags/<id>")]
-pub fn list_authenticated(_conn: AttendDatabase, _teacher: TeacherCookie, id: u16) -> Template {
+pub fn authenticated(conn: AttendDatabase, _teacher: TeacherCookie, id: String) -> Result<Template, Flash<Redirect>> {
+    use diesel::prelude::*;
+    use crate::schema::tag::dsl as tag_dsl;
+    use crate::schema::attendee::dsl as attendee_dsl;
+    use crate::models::{ tag::*, attendee::* };
+
+    let tag_results = tag_dsl::tag
+        .load::<Tag>(&*conn)
+        .expect("Couldn't access tags");
+
+    let mut can_continue = false;
+
+    for tag_result in tag_results {
+        if id == tag_result.tag_id {
+            can_continue = true;
+        }
+    }
+
+    if !can_continue {
+        return Err(Flash::error(Redirect::to("/tags"), "The tag id isn't in the database. "))
+    }
+
+    let attendee_results = &attendee_dsl::attendee
+        .load::<Attendee>(&*conn)
+        .expect("Couldn't access attendees");
+
+    for attendee_result in attendee_results {
+        if id == attendee_result.tag_id {
+            return Err(Flash::error(Redirect::to("/tags"), "The tag id is already assigned to an attendee. "))
+        }
+    }
+
     let mut data = HashMap::new();
     data.insert("tag", id);
-    
+
     let context = Context {
         logged_in: true,
         data,
     };
 
-    Template::render("tags/tag", context)
+    Ok(Template::render("tags/tag", context))
 }
 
 #[get("/tags/<_id>", rank = 2)]
-pub fn list_unauthenticated(_id: u16) -> Redirect {
+pub fn unauthenticated(_id: String) -> Redirect {
     Redirect::to("/login")
 }

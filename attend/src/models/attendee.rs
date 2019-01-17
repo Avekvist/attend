@@ -7,7 +7,7 @@ use std::io::Cursor;
 
 use crate::schema::attendee;
 
-#[derive(Queryable)]
+#[derive(Queryable, Serialize)]
 pub struct Attendee {
     pub attendee_id: i32,
     pub tag_id: String,

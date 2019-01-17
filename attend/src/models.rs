@@ -4,3 +4,4 @@ pub mod class;
 pub mod tag;
 pub mod teacher;
 pub mod teacherclassbridge;
+pub mod attendeeclassbridge;

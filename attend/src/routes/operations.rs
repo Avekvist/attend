@@ -1,5 +1,5 @@
-use rocket::response::{ Flash, Redirect };
 use crate::models::attendee::AttendeeCreate;
+use rocket::response::{ Flash, Redirect };
 use rocket::request::Form;
 use crate::AttendDatabase;
 pub mod logout;
@@ -15,7 +15,7 @@ pub fn create_attendee(conn: AttendDatabase, attendee_create: Form<AttendeeCreat
     let attendee_results = dsl::attendee
         .load::<Attendee>(&*conn)
         .expect("Couldn't access attendees");
-    
+
     let mut in_system = false;
 
     for attendee_result in attendee_results {
@@ -25,24 +25,25 @@ pub fn create_attendee(conn: AttendDatabase, attendee_create: Form<AttendeeCreat
         }
     }
 
-    if !in_system {
-        use crate::schema::attendee;
+    match in_system {
+        false => {
+            use crate::schema::attendee;
 
-        let new_attendee = AttendeeCreate {
-            tag_id: attendee_create.tag_id.clone(),
-            attendee_name: attendee_create.attendee_name.clone(),
-        };
+            let new_attendee = AttendeeCreate {
+                tag_id: attendee_create.tag_id.clone(),
+                attendee_name: attendee_create.attendee_name.clone(),
+            };
 
-        let result = diesel::insert_into(attendee::table)
-            .values(&new_attendee)
-            .execute(&*conn);
-        
-        match result {
-            Ok(_) => Ok(Redirect::to("/tags")),
-            _ => Err(Flash::error(Redirect::to(format!("/tags/{}", attendee_create.tag_id)), "Couldn't add attendee. "))
-        }
-    } else {
-        Err(Flash::error(Redirect::to(format!("/tags/{}", attendee_create.tag_id)), "Tag is already assigned. "))
+            let result = diesel::insert_into(attendee::table)
+                .values(&new_attendee)
+                .execute(&*conn);
+
+            match result {
+                Ok(_) => Ok(Redirect::to("/tags")),
+                _ => Err(Flash::error(Redirect::to(format!("/tags/{}", attendee_create.tag_id)), "Couldn't add attendee. "))
+            }
+        },
+        true => Err(Flash::error(Redirect::to(format!("/tags/{}", attendee_create.tag_id)), "Tag is already assigned. "))
     }
 }
 
@@ -51,7 +52,7 @@ pub fn handle_tag(conn: AttendDatabase, tag_id: String) -> &'static str {
     use diesel::prelude::*;
     use crate::schema::attendee::dsl;
     use crate::models::{ attendee::*, attendance::*, tag::*, };
-
+    
     let tag_id = tag_id.split("=").collect::<Vec<&str>>()[1];
 
     let results = dsl::attendee
@@ -104,7 +105,7 @@ pub fn handle_tag(conn: AttendDatabase, tag_id: String) -> &'static str {
             let result = diesel::insert_into(tag::table)
                 .values(&new_tag)
                 .execute(&*conn);
-            
+
             match result {
                 Ok(_) => "In System Not An Attendee",
                 _ => "Couldn't handle tag. "

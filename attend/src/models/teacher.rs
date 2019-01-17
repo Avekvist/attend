@@ -37,8 +37,6 @@ impl str::FromStr for TeacherCookie {
     fn from_str(input_string: &str) -> Result<Self, Self::Err> {
         let result: Vec<&str> = input_string.split("&").collect();
 
-        println!("{}", result.len());
-
         if result.len() > 1 {
             let name = result[0].split("=").collect::<Vec<&str>>()[1];
             let username = result[1].split("=").collect::<Vec<&str>>()[1];

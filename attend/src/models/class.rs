@@ -1,6 +1,6 @@
 use crate::schema::class;
 
-#[derive(Queryable)]
+#[derive(Queryable, Serialize)]
 pub struct Class {
     pub class_id: i32,
     pub class_name: String,

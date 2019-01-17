@@ -1,6 +1,6 @@
 use crate::schema::attendance;
 
-#[derive(Queryable)]
+#[derive(Queryable, Serialize)]
 pub struct Attendance {
     pub attendance_id: i32,
     pub class_id: i32,
