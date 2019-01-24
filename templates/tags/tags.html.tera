@@ -11,7 +11,7 @@ Taggar
 {% block content %}
     <section>
         <h1>Taggar</h1>
-        {% for tag in data.tags %}
+        {% for tag in data %}
             <hr><a href="/tags/{{ tag }}">{{ tag }}</a>
         {% endfor %}
     </section>

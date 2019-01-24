@@ -9,15 +9,18 @@ Hem
 {% endblock header %}
 
 {% block content %}
-    {% for class in data.class %}
-        <p>Frånvaro</p>
-        {% for attendee in class.absent %}
-            <a href="/students/{{ attendee.attendee_id }}" class="attendance-anchors">{{ attendee.name }}</a>
-        {% endfor %}
-        <hr>
-        <p>Närvaro</p>
-        {% for attendance in class.attending %}
-            <a href="/attendance/{{ attendance }}" class="attendance-anchors">{{ attendance }}</a>
-        {% endfor %}
+    {% for class in data %}
+        <section>
+            <h1>{{ class.class_name }}</h1>
+            <h3>Frånvaro</h3>
+            {% for attendee in class.absent %}
+                <a href="/students/{{ attendee.attendee_id }}" class="attendance-anchors">{{ attendee.attendee_name }}</a>
+            {% endfor %}
+            <hr>
+            <h3>Närvaro</h3>
+            {% for attendee in class.attending %}
+                <a href="/students/{{ attendee.attendee_id }}" class="attendance-anchors">{{ attendee.attendee_name }}</a>
+            {% endfor %}
+        </section>
     {% endfor %}
 {% endblock content %}

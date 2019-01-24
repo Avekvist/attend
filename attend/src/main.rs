@@ -37,7 +37,7 @@ fn rocket() -> rocket::Rocket {
     rocket::ignite()
         .mount("/", routes![
             test,
-            
+
             routes::attendance::authenticated,
             routes::attendance::list_authenticated,
             routes::attendance::list_unauthenticated,
@@ -73,12 +73,14 @@ fn rocket() -> rocket::Rocket {
             routes::tags::list_authenticated,
             routes::tags::list_unauthenticated,
             routes::tags::unauthenticated,
-        ]).mount("/", StaticFiles::from("static"))
+        ])
+        .mount("/", StaticFiles::from("static"))
         .register(catchers![
-            catchers::internal_error, 
-            catchers::not_found, 
-            catchers::unprocessable_entity, 
-        ]).attach(Template::fairing())
+            catchers::internal_error,
+            catchers::not_found,
+            catchers::unprocessable_entity,
+        ])
+        .attach(Template::fairing())
         .attach(AttendDatabase::fairing())
 }
 

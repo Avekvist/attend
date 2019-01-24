@@ -23,7 +23,7 @@ pub fn list_authenticated(conn: AttendDatabase, _teacher: TeacherCookie) -> Temp
     let results: Vec<_> = tag_results.into_iter().filter(|tag| {
         let mut success = true;
 
-        attendee_results.into_iter().for_each(|attendee| {
+        attendee_results.iter().for_each(|attendee| {
             if attendee.tag_id == tag.tag_id {
                 success = false;
             }
@@ -32,14 +32,11 @@ pub fn list_authenticated(conn: AttendDatabase, _teacher: TeacherCookie) -> Temp
         success
     }).collect();
 
-    let results: Vec<_> = results.into_iter().map(|tag| tag.tag_id).collect();
-
-    let mut data = HashMap::new();
-    data.insert("tags", results);
+    let tags: Vec<_> = results.into_iter().map(|tag| tag.tag_id).collect();
 
     let context = Context {
         logged_in: true,
-        data,
+        data: tags,
     };
 
     Template::render("tags/tags", context)

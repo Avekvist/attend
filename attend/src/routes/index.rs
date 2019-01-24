@@ -6,10 +6,10 @@ use crate::AttendDatabase;
 use super::Context;
 
 #[derive(Serialize)]
-struct ClassData {
+pub struct ClassData {
     pub class_name: String,
     pub absent: Vec<crate::models::attendee::Attendee>,
-    pub attending: Vec<crate::models::attendance::Attendance>
+    pub attending: Vec<crate::models::attendee::Attendee>
 }
 
 #[get("/")]
@@ -23,7 +23,7 @@ pub fn authenticated(conn: AttendDatabase, teacher: TeacherCookie) -> Template {
     use diesel::prelude::*;
 
     let datetime = chrono::prelude::Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
-    let date = &datetime.split(" ").collect::<Vec<_>>()[0];
+    let _date = &datetime.split(' ').collect::<Vec<_>>()[0];
 
     // Search TeacherClassBridge with the username from the TeacherCookie
     // Find all of the courses, search for Attendees with AttendeeClassBridge
@@ -37,7 +37,7 @@ pub fn authenticated(conn: AttendDatabase, teacher: TeacherCookie) -> Template {
 
     let class_id_results: Vec<i32> =
         tcb_results
-        .into_iter()
+        .iter()
         .map(|tcb_result| tcb_result.class_id)
         .collect();
 
@@ -45,7 +45,7 @@ pub fn authenticated(conn: AttendDatabase, teacher: TeacherCookie) -> Template {
         .load::<Class>(&*conn)
         .expect("Error loading classes");
 
-    let class_results: Vec<_> = class_results
+    let _class_results: Vec<_> = class_results
         .into_iter()
         .filter(|class_result| {
             let mut result = false;
@@ -58,18 +58,7 @@ pub fn authenticated(conn: AttendDatabase, teacher: TeacherCookie) -> Template {
             result
         })
         .collect();
-/*
-    let mut acb_results = Vec::new();
 
-    for class in &class_results {
-        acb_results.push(
-            acb_dsl::attendeeclassbridge
-                .filter(acb_dsl::class_id.eq(class.class_id))
-                .load::<AttendeeClassBridge>(&*conn)
-                .expect("Error loading attendee class bridges")
-        );
-    }
-*/
     let absent = vec![
         crate::models::attendee::Attendee {
             attendee_id: 2,
@@ -79,16 +68,14 @@ pub fn authenticated(conn: AttendDatabase, teacher: TeacherCookie) -> Template {
     ];
 
     let attending = vec![
-        crate::models::attendance::Attendance {
-            attendance_id: 3,
-            class_id: 2,
-            attendee_id: 6,
-            attendance_date: String::from("2019-01-14"),
-            attendance_time: String::from("16:13:32"),
+        crate::models::attendee::Attendee {
+            attendee_id: 3,
+            tag_id: String::from("12321232"),
+            attendee_name: String::from("Louise"),
         }
     ];
 
-    let class_data: Vec<ClassData> = vec![
+    let class: Vec<ClassData> = vec![
         ClassData {
             class_name: String::from("Bah"),
             absent,
@@ -96,12 +83,9 @@ pub fn authenticated(conn: AttendDatabase, teacher: TeacherCookie) -> Template {
         }
     ];
 
-    let mut data = HashMap::new()
-        .insert("class", class_data);
-
     let context = Context {
         logged_in: true,
-        data,
+        data: class,
     };
 
     Template::render("index", context)
