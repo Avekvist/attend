@@ -7,7 +7,7 @@ use std::io::Cursor;
 
 use crate::schema::attendee;
 
-#[derive(Queryable, Serialize)]
+#[derive(Queryable, Serialize, Clone)]
 pub struct Attendee {
     pub attendee_id: i32,
     pub tag_id: String,
@@ -23,7 +23,7 @@ pub struct AttendeeCreate {
 
 impl<'r> Responder<'r> for Attendee {
     fn respond_to(self, request: &Request<'_>) -> Result<Response<'r>, Status> {
-        if let Some(_) = request.cookies().get_private("teacher") {
+        if request.cookies().get_private("teacher").is_some() {
             Ok(Response::build()
                 .status(Status::Ok)
                 .header(ContentType::HTML)

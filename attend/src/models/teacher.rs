@@ -35,11 +35,11 @@ impl str::FromStr for TeacherCookie {
     type Err = ();
 
     fn from_str(input_string: &str) -> Result<Self, Self::Err> {
-        let result: Vec<&str> = input_string.split("&").collect();
+        let result: Vec<&str> = input_string.split('&').collect();
 
         if result.len() > 1 {
-            let name = result[0].split("=").collect::<Vec<&str>>()[1];
-            let username = result[1].split("=").collect::<Vec<&str>>()[1];
+            let name = result[0].split('=').collect::<Vec<&str>>()[1];
+            let username = result[1].split('=').collect::<Vec<&str>>()[1];
 
             Ok(TeacherCookie { name: name.to_string(), username: username.to_string(), })
         } else {

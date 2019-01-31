@@ -25,25 +25,24 @@ pub fn create_attendee(conn: AttendDatabase, attendee_create: Form<AttendeeCreat
         }
     }
 
-    match in_system {
-        false => {
-            use crate::schema::attendee;
+    if !in_system {
+        use crate::schema::attendee;
 
-            let new_attendee = AttendeeCreate {
-                tag_id: attendee_create.tag_id.clone(),
-                attendee_name: attendee_create.attendee_name.clone(),
-            };
+        let new_attendee = AttendeeCreate {
+            tag_id: attendee_create.tag_id.clone(),
+            attendee_name: attendee_create.attendee_name.clone(),
+        };
 
-            let result = diesel::insert_into(attendee::table)
-                .values(&new_attendee)
-                .execute(&*conn);
+        let result = diesel::insert_into(attendee::table)
+            .values(&new_attendee)
+            .execute(&*conn);
 
-            match result {
-                Ok(_) => Ok(Redirect::to("/tags")),
-                _ => Err(Flash::error(Redirect::to(format!("/tags/{}", attendee_create.tag_id)), "Couldn't add attendee. "))
-            }
-        },
-        true => Err(Flash::error(Redirect::to(format!("/tags/{}", attendee_create.tag_id)), "Tag is already assigned. "))
+        match result {
+            Ok(_) => Ok(Redirect::to("/tags")),
+            _ => Err(Flash::error(Redirect::to(format!("/tags/{}", attendee_create.tag_id)), "Couldn't add attendee. "))
+        }
+    } else {
+        Err(Flash::error(Redirect::to(format!("/tags/{}", attendee_create.tag_id)), "Tag is already assigned. "))
     }
 }
 
@@ -52,8 +51,8 @@ pub fn handle_tag(conn: AttendDatabase, tag_id: String) -> &'static str {
     use diesel::prelude::*;
     use crate::schema::attendee::dsl;
     use crate::models::{ attendee::*, attendance::*, tag::*, };
-    
-    let tag_id = tag_id.split("=").collect::<Vec<&str>>()[1];
+
+    let tag_id = tag_id.split('=').collect::<Vec<&str>>()[1];
 
     let results = dsl::attendee
         .load::<Attendee>(&*conn)
@@ -61,12 +60,12 @@ pub fn handle_tag(conn: AttendDatabase, tag_id: String) -> &'static str {
 
     let attendee_results: Vec<_> = results.into_iter().filter(|attendee| attendee.tag_id == tag_id).collect();
 
-    if attendee_results.len() > 0 {
+    if !attendee_results.is_empty() {
         use crate::schema::attendance;
 
         let datetime = chrono::prelude::Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
-        let date = &datetime.split(" ").collect::<Vec<_>>()[0];
-        let time = &datetime.split(" ").collect::<Vec<_>>()[1];
+        let date = &datetime.split(' ').collect::<Vec<_>>()[0];
+        let time = &datetime.split(' ').collect::<Vec<_>>()[1];
 
         let new_attendance = AttendanceCreate {
             class_id: 0,
@@ -92,8 +91,8 @@ pub fn handle_tag(conn: AttendDatabase, tag_id: String) -> &'static str {
 
         let tag_results: Vec<_> = results.into_iter().filter(|tag| tag.tag_id == tag_id).collect();
 
-        if tag_results.len() > 0 {
-            return "In System Not An Attendee";
+        if !tag_results.is_empty() {
+            "In System Not An Attendee"
         } else {
             use crate::schema::tag;
 

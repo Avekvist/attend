@@ -28,10 +28,10 @@ pub fn authenticated(conn: AttendDatabase, teacher: TeacherCookie) -> Template {
         .load::<Class>(&*conn)
         .expect("Error loading classes");
 
-    let class_results: Vec<_> = class_results.into_iter().filter(|class_result| {
+    let class_results: Vec<_> = class_results.iter().filter(|class_result| {
         let mut success = false;
-        
-        tcb_results.into_iter().for_each(|tcb_result| {
+
+        tcb_results.iter().for_each(|tcb_result| {
             if tcb_result.class_id == class_result.class_id {
                 success = true;
             }
@@ -42,8 +42,8 @@ pub fn authenticated(conn: AttendDatabase, teacher: TeacherCookie) -> Template {
 
     let attendance_results: &Vec<_> = &attendance_results.into_iter().filter(|attendance_result| {
         let mut success = false;
-        
-        tcb_results.into_iter().for_each(|tcb_result| {
+
+        tcb_results.iter().for_each(|tcb_result| {
             if attendance_result.class_id == tcb_result.class_id {
                 success = true;
             }

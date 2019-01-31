@@ -14,7 +14,7 @@ attend_schedule_interpreter = { path = "../attend_schedule_interpreter" }
 chrono = "0.4"
 
 [dependencies.diesel]
-version = "1.3.3"
+version = "1.4.1"
 default-features = false
 features = [ "mysql", "chrono" ]
 

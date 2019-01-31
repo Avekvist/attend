@@ -6,7 +6,7 @@
         <meta name='viewport' content='width=device-width, initial-scale=1' />
 
         <title>{% block title %}{% endblock title %} - Attend</title>
-        
+
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Oxygen+Mono' />
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
     </head>
@@ -42,7 +42,7 @@
             </main>
 
             <footer>
-                <p>&copy; Avekvist 2018
+                <p>&copy; Avekvist 2018-2019
             </footer>
         </div>
 
