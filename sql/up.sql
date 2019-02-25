@@ -34,6 +34,7 @@ CREATE TABLE `attendance` (
   `attendee_id` int NOT NULL,
   `attendance_date` varchar(20) NOT NULL,
   `attendance_time` varchar(20) NOT NULL,
+  `on_time` boolean NOT NULL,
   PRIMARY KEY (`attendance_id`),
   KEY `FK` (`class_id`, `attendee_id`)
 );
@@ -42,7 +43,7 @@ CREATE TABLE `teacher` (
   `username` varchar(20) NOT NULL,
   `password` varchar(100) NOT NULL,
   `teacher_name` varchar(100) NOT NULL,
-  `is_admin` tinyint(1) NOT NULL,
+  `is_authorized` tinyint(1) NOT NULL,
   PRIMARY KEY (`username`)
 );
 
@@ -51,4 +52,3 @@ CREATE TABLE `class` (
   `class_name` varchar(20) NOT NULL,
   PRIMARY KEY (`class_id`)
 );
-

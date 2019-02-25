@@ -135,26 +135,10 @@ pub fn authenticated(conn: AttendDatabase, teacher: TeacherCookie) -> Template {
                 .filter(|attendee| {
                     let mut result = false;
 
-                    let mut in_acb = false;
-                    let mut attendee_acb = false;
-                    let mut attendee_attendance = false;
-
                     for attendance_result in &attendance {
                         for acb_result in acb_results {
-                            if acb_result.class_id == *class_id_result && acb_result.class_id.eq(&attendance_result.class_id) {
-                                in_acb = true;
-
-                                if in_acb && acb_result.attendee_id.eq(&attendee.attendee_id) {
-                                    attendee_acb = true;
-
-                                    if attendance_result.attendee_id.eq(&attendee.attendee_id) {
-                                        attendee_attendance = true;
-
-                                        if in_acb && attendee_acb && attendee_attendance {
-                                            result = true;
-                                        }
-                                    }
-                                }
+                            if acb_result.class_id == *class_id_result && acb_result.class_id.eq(&attendance_result.class_id) && acb_result.attendee_id.eq(&attendee.attendee_id) && attendance_result.attendee_id.eq(&attendee.attendee_id) {
+                                    result = true;
                             }
                         }
                     }
@@ -170,26 +154,10 @@ pub fn authenticated(conn: AttendDatabase, teacher: TeacherCookie) -> Template {
                 .filter(|attendee| {
                     let mut result = true;
 
-                    let mut in_acb = false;
-                    let mut attendee_acb = false;
-                    let mut attendee_attendance = false;
-
                     for attendance_result in &attendance {
                         for acb_result in acb_results {
-                            if acb_result.class_id == *class_id_result && acb_result.class_id.eq(&attendance_result.class_id) {
-                                in_acb = true;
-
-                                if in_acb && acb_result.attendee_id.eq(&attendee.attendee_id) {
-                                    attendee_acb = true;
-
-                                    if attendance_result.attendee_id.eq(&attendee.attendee_id) {
-                                        attendee_attendance = true;
-
-                                        if in_acb && attendee_acb && attendee_attendance {
-                                            result = false;
-                                        }
-                                    }
-                                }
+                            if acb_result.class_id == *class_id_result && acb_result.class_id.eq(&attendance_result.class_id) && acb_result.attendee_id.eq(&attendee.attendee_id) && attendance_result.attendee_id.eq(&attendee.attendee_id) {
+                                result = false;
                             }
                         }
                     }

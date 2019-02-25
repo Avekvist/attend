@@ -31,6 +31,11 @@ pub struct TeacherCookie {
     pub username: String,
 }
 
+#[derive(Serialize, Deserialize)]
+pub struct ClassTeacher {
+    pub username: String,
+}
+
 impl str::FromStr for TeacherCookie {
     type Err = ();
 

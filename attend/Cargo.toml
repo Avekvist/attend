@@ -9,6 +9,7 @@ rocket = "0.4.0"
 rocket_codegen = "0.4.0"
 serde = "1.0.82"
 serde_derive = "1.0.82"
+serde_json = "1.0.38"
 dotenv = "0.13.0"
 attend_schedule_interpreter = { path = "../attend_schedule_interpreter" }
 chrono = "0.4"

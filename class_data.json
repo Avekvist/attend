@@ -1,0 +1,87 @@
+[
+    {
+        "id": 1,
+        "name": "DAODAC0",
+        "time": {
+            "date": "2019-02-27",
+            "start": "11:40",
+            "end": "14:00"
+        },
+        "teachers": [
+            {
+                "username": "DAO"
+            },
+            {
+                "username": "attend"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "PRRPRR01",
+        "time": {
+            "date": "2019-02-25",
+            "start": "11:05",
+            "end": "12:15"
+        },
+        "teachers": [
+            {
+                "username": "DAO"
+            },
+            {
+                "username": "attend"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "PRRPRR01",
+        "time": {
+            "date": "2019-02-25",
+            "start": "12:50",
+            "end": "14:00"
+        },
+        "teachers": [
+            {
+                "username": "DAO"
+            },
+            {
+                "username": "attend"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "WEUWEB01",
+        "time": {
+            "date": "2019-02-28",
+            "start": "14:10",
+            "end": "16:30"
+        },
+        "teachers": [
+            {
+                "username": "DAO"
+            },
+            {
+                "username": "attend"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "name": "BXPRRPRR01",
+        "time": {
+            "date": "2019-02-25",
+            "start": "15:20",
+            "end": "16:30"
+        },
+        "teachers": [
+            {
+                "username": "DAO"
+            },
+            {
+                "username": "attend"
+            }
+        ]
+    }
+]

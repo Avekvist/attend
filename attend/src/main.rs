@@ -19,18 +19,23 @@ pub mod catchers;
 pub mod routes;
 pub mod models;
 pub mod schema;
+pub mod helper;
+
+use crate::models::class::ClassJSON;
 
 #[database("attend")]
 pub struct AttendDatabase(ds::MysqlConnection);
 
 #[get("/test")]
 fn test() -> rocket::response::Content<&'static str> {
-    rocket::response::Content(rocket::http::ContentType::HTML, r"
-        <form action='/handle_tag' method='post'>
-            <input type='text' name='tag_id' />
-            <input type='submit' value='Send' />
-        </form>
-    ")
+    rocket::response::Content(rocket::http::ContentType::HTML,
+        r"
+            <form action='/handle_tag' method='post'>
+                <input type='text' name='tag_id' />
+                <input type='submit' value='Send' />
+            </form>
+        "
+    )
 }
 
 fn rocket() -> rocket::Rocket {
@@ -84,7 +89,21 @@ fn rocket() -> rocket::Rocket {
         .attach(AttendDatabase::fairing())
 }
 
+pub fn get_classes() -> Result<Vec<ClassJSON>, serde_json::error::Error> {
+    serde_json::from_str(
+        &std::fs::read_to_string("class_data.json")
+            .expect("Couldn't read the file. ")
+    )
+}
+
 fn main() {
+    let classes = get_classes().unwrap();
+
+    for class in classes {
+        println!("The class is called {} with id {}", class.name, class.id);
+        println!("{}", class.time);
+    }
+
     dotenv().ok();
     rocket().launch();
 }
