@@ -2,20 +2,30 @@ $(document).ready(function(){
 
   var number = 0;
 
-
+  $('nav #container img').css('cursor','pointer')
 
   $('#ide').css("margin-left","0px")
+  $('#ide').css("margin-top","0px")
+  $('#ide').css("width","96px")
   $('#ide a').css("display","none")
 
+
   $('#order').css("margin-left","0px")
+  $('#order').css("margin-top","0px")
+  $('#order').css("width","96px")
   $('#order a').css("display","none")
 
   $('#about').css("margin-left","0px")
+  $('#about').css("margin-top","0px")
+  $('#about').css("width","96px")
   $('#about a').css("display","none")
 
   $('#contact').css("margin-left","0px")
+  $('#contact').css("margin-top","0px")
+  $('#contact').css("width","96px")
   $('#contact a').css("display","none")
 
+  $('header').css('margin-top','0px')
 
 
 
