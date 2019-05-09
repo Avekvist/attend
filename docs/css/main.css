@@ -109,7 +109,7 @@ header{
 
 }
 header h1{
-  font-size:4em;
+  font-size:400%;
 }
 main{
 width:100%;
@@ -141,8 +141,10 @@ section h1{
 
 
 @media screen and (max-width:730px) {
-  
 
+  header h1{
+    font-size:200%;
+  }
 
 
 
