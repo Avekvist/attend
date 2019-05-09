@@ -116,7 +116,7 @@ $(document).ready(function(){
 
       number=1;
     }else{
-      if($(window).width()<730){
+
         $('#ide a').css('display','none');
         $('#ide').animate({
           width:'96px'
@@ -166,31 +166,7 @@ $(document).ready(function(){
 
         });
 
-
-
-      }else{
-
-        $('#ide a').css('display', "none");
-        $('#ide').animate({
-          marginLeft:'0px'
-        },400);
-
-        $('#order a').css('display', 'none');
-        $('#order').animate({
-          marginLeft:'0px'
-        },400);
-
-        $('#about a').css('display', 'none');
-        $('#about').animate({
-        marginLeft:'0px'
-        },400);
-
-        $('#contact a').css('display', 'none');
-        $('#contact').animate({
-        marginLeft:'0px'
-        },400);
-      }
-
+        
         number=0;
     }
   });

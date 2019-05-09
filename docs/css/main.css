@@ -18,7 +18,7 @@ nav{
 }
 nav #container img{
   position:absolute;
-  
+
 
 
 }
@@ -48,13 +48,13 @@ nav #container img{
   border: 30px solid black ;
   border-image: url(../imgs/border.png) 34% repeat;
   box-sizing: border-box;
+  text-align:center;
   z-index:-1;
   margin-left:-150px;
 }
 #order a{
   position:relative;
   font-size:150%;
-
   left:-12px;
   text-decoration: none;
   color:black;
@@ -67,6 +67,7 @@ nav #container img{
   border: 30px solid black ;
   border-image: url(../imgs/border.png) 34% repeat;
   box-sizing: border-box;
+  text-align:center;
   z-index:-1;
   margin-left: 150px;
 }
@@ -86,6 +87,7 @@ nav #container img{
   border: 30px solid black ;
   border-image: url(../imgs/border.png) 34% repeat;
   box-sizing: border-box;
+  text-align: center;
   z-index:-1;
   margin-left: 300px;
 }
