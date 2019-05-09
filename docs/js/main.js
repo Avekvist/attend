@@ -91,7 +91,7 @@ $(document).ready(function(){
         $('#ide').animate({
           marginLeft:'-300px'
         },400, function(){
-          $('#ide a').css('display', "block");
+          $('#ide a').css('display', "initial");
         });
 
         $('#order').animate({
@@ -166,7 +166,7 @@ $(document).ready(function(){
 
         });
 
-        
+
         number=0;
     }
   });
