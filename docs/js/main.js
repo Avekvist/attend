@@ -91,7 +91,7 @@ $(document).ready(function(){
         $('#ide').animate({
           marginLeft:'-300px'
         },400, function(){
-          $('#ide a').css('display', "initial");
+          $('#ide a').css('display', "block");
         });
 
         $('#order').animate({
