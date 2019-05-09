@@ -1,11 +1,151 @@
 html, body {
     font-family: myriad-pro, sans-serif;
+
 }
 nav{
-  
+
   width:100%;
   height:100px;
+  display:flex;
+  flex-direction: row;
 }
-nav img{
-  margin-left:45%;
+
+
+#container{
+  margin:auto;
+  height:100px;
+  width:100px;
+}
+nav #container img{
+  position:absolute;
+  cursor:pointer;
+
+
+}
+#ide{
+  height:96px;;
+  width:96px;
+  position:absolute;
+  border: 30px solid black ;
+  border-image: url(../imgs/border.png) 34% repeat;
+  box-sizing: border-box;
+  z-index:-1;
+  text-align:center;
+  margin-left: -300px;
+}
+#ide a{
+  position:relative;
+  font-size:150%;
+  left:-5px;
+  text-decoration: none;
+  color:black;
+  font-weight: bold;
+}
+#order{
+  height:96px;;
+  width:96px;
+  position:absolute;
+  border: 30px solid black ;
+  border-image: url(../imgs/border.png) 34% repeat;
+  box-sizing: border-box;
+  z-index:-1;
+  margin-left:-150px;
+}
+#order a{
+  position:relative;
+  font-size:150%;
+
+  left:-12px;
+  text-decoration: none;
+  color:black;
+  font-weight: bold;
+}
+#about{
+  height:96px;;
+  width:96px;
+  position:absolute;
+  border: 30px solid black ;
+  border-image: url(../imgs/border.png) 34% repeat;
+  box-sizing: border-box;
+  z-index:-1;
+  margin-left: 150px;
+}
+#about a{
+  position:relative;
+  font-size:150%;
+
+  left:-14px;
+  text-decoration: none;
+  color:black;
+  font-weight: bold;
+}
+#contact{
+  height:96px;;
+  width:96px;
+  position:absolute;
+  border: 30px solid black ;
+  border-image: url(../imgs/border.png) 34% repeat;
+  box-sizing: border-box;
+  z-index:-1;
+  margin-left: 300px;
+}
+#contact a{
+  position:relative;
+  font-size:150%;
+  left:-23px;
+  text-decoration: none;
+  color:black;
+  font-weight: bold;
+
+}
+header{
+  width:70%;
+  padding:0,5%;
+  background-color:#575757;
+  margin:auto;
+  color:white;
+  text-align:center;
+
+
+}
+header h1{
+  font-size:4em;
+}
+main{
+width:100%;
+
+margin-top:5%;
+display:flex;
+flex-direction: row;
+flex-wrap: wrap;
+
+}
+section{
+  width:350px;
+  height:30rem;
+  margin:auto;
+  margin-top:1%;
+  background-color:none;
+  border: 50px solid black ;
+  border-image: url(../imgs/border.png) 34% repeat;
+  box-sizing: border-box;
+
+
+}
+section h1{
+  position: relative;
+  top: -60px;
+  text-align:center;
+  font-size:3em;
+}
+
+
+@media screen and (max-width:730px) {
+  
+
+
+
+
+
+
 }
