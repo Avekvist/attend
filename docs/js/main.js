@@ -1,184 +1,156 @@
-$(document).ready(function(){
+$(document).ready(function() {
+
+  $('.nav-button').css('z-index', -1);
+  $('.nav-button').css('margin-left', 0);
+  $('.nav-button').css('margin-top', 0);
+  $('.nav-button').css('width', '96px');
+
 
   var number = 0;
 
-  $('nav #container img').css('cursor','pointer')
+  $('nav #container img').css('cursor', 'pointer');
+  $('header').css('margin-top', '0px');
 
-  $('#ide').css("margin-left","0px")
-  $('#ide').css("margin-top","0px")
-  $('#ide').css("width","96px")
-  $('#ide a').css("display","none")
-
-
-  $('#order').css("margin-left","0px")
-  $('#order').css("margin-top","0px")
-  $('#order').css("width","96px")
-  $('#order a').css("display","none")
-
-  $('#about').css("margin-left","0px")
-  $('#about').css("margin-top","0px")
-  $('#about').css("width","96px")
-  $('#about a').css("display","none")
-
-  $('#contact').css("margin-left","0px")
-  $('#contact').css("margin-top","0px")
-  $('#contact').css("width","96px")
-  $('#contact a').css("display","none")
-
-  $('header').css('margin-top','0px')
-
-
-
-
-  $('#logo').click(function(){
-    if(number==0){
-      if($(window).width()<730){
+  $('#logo').click(function() {
+    if (number == 0) {
+      if ($(window).width() < 730) {
         $('header').animate({
-          marginTop:'475px'
+          marginTop: '475px'
         });
+        $('#ide').animate({
+          marginTop: '100px'
+        }, 400);
+        $('#ide').animate({
+            paddingRight:'36%',
+            paddingLeft:'30%',
+            marginLeft:'-30%'
 
-        $('#ide').animate({
-          marginTop:'100px'
-        },400);
-        $('#ide').animate({
-          marginLeft:'-30%'
-        },400);
-        $('#ide').animate({
+        }, 400);
+      /*  $('#ide').animate({
           width:'75%'
-        },300, function(){
-          $('#ide a').css('display', "block");
-        });
+        }, 300);*/
 
         $('#order').animate({
-          marginTop:'225px'
-        },400);
+          marginTop: '225px'
+        }, 400);
         $('#order').animate({
+          paddingRight:'36%',
+          paddingLeft:'30%',
           marginLeft:'-30%'
-        },400);
-        $('#order').animate({
-          width:'75%'
-        },300, function(){
-          $('#order a').css('display', "block");
-        });
+        }, 400);
+
 
         $('#about').animate({
-          marginTop:'350px'
-        },400);
+          marginTop: '350px'
+        }, 400);
         $('#about').animate({
+          paddingRight:'36%',
+          paddingLeft:'30%',
           marginLeft:'-30%'
-        },400);
-        $('#about').animate({
-          width:'75%'
-        },300, function(){
-          $('#about a').css('display', "block");
-        });
+        }, 400);
+
 
         $('#contact').animate({
-          marginTop:'475px'
-        },400);
+          marginTop: '475px'
+        }, 400);
         $('#contact').animate({
+          paddingRight:'36%',
+          paddingLeft:'30%',
           marginLeft:'-30%'
-        },400);
-        $('#contact').animate({
-          width:'75%'
-        },300, function(){
-          $('#contact a').css('display', "block");
+        }, 400, function() {
+
+          $('.nav-button').css('z-index',0);
         });
 
 
 
-      }else{
+      } else {
         $('#ide').animate({
-          marginLeft:'-300px'
-        },400, function(){
-          $('#ide a').css('display', "block");
-        });
+          marginLeft: '-300px'
+        }, 400);
 
         $('#order').animate({
-        marginLeft:'-150px'
-        },400, function(){
-        $('#order a').css('display', 'block');
-        });
+          marginLeft: '-150px'
+        }, 400);
 
         $('#about').animate({
-        marginLeft:'150px'
-        },400, function(){
-          $('#about a').css('display', 'block');
-        });
+          marginLeft: '150px'
+        }, 400);
 
         $('#contact').animate({
-        marginLeft:'300px'
-        },400, function(){
-          $('#contact a').css('display', 'block');
+          marginLeft: '300px'
+        }, 400, function() {
+          $('.nav-button').css('z-index',0);
         });
-
       }
 
-      number=1;
-    }else{
-
-        $('#ide a').css('display','none');
-        $('#ide').animate({
-          width:'96px'
-        },300);
-        $('#ide').animate({
-          marginLeft:'0%'
-        },400);
-        $('#ide').animate({
-          marginTop:'0px'
-        },300);
-
-        $('#order a').css('display','none');
-        $('#order').animate({
-          width:'96px'
-        },300);
-        $('#order').animate({
-          marginLeft:'0%'
-        },400);
-        $('#order').animate({
-          marginTop:'0px'
-        },300);
-
-        $('#about a').css('display','none');
-        $('#about').animate({
-          width:'96px'
-        },300);
-        $('#about').animate({
-          marginLeft:'0%'
-        },400);
-        $('#about').animate({
-          marginTop:'0px'
-        },300);
-
-        $('#contact a').css('display','none');
-        $('#contact').animate({
-          width:'96px'
-        },300);
-        $('#contact').animate({
-          marginLeft:'0%'
-        },400);
-        $('#contact').animate({
-          marginTop:'0px'
-        },300, function(){
-          $('header').animate({
-            marginTop:'0px'
-          },400);
-
-        });
+      number = 1;
+    } else {
 
 
-        number=0;
+      $('.nav-button').css('z-index',-1);
+      $('#ide').animate({
+        width: '96px'
+      }, 300);
+      $('#ide').animate({
+        paddingRight:'0',
+        paddingLeft:'0',
+        marginLeft:'0'
+      }, 400);
+      $('#ide').animate({
+        marginTop: '0px'
+      }, 300);
+
+
+      $('#order').animate({
+        width: '96px'
+      }, 300);
+      $('#order').animate({
+        paddingRight:'0',
+        paddingLeft:'0',
+        marginLeft:'0'
+      }, 400);
+      $('#order').animate({
+        marginTop: '0px'
+      }, 300);
+
+
+      $('#about').animate({
+        width: '96px'
+      }, 300);
+      $('#about').animate({
+        paddingRight:'0',
+        paddingLeft:'0',
+        marginLeft:'0'
+      }, 400);
+      $('#about').animate({
+        marginTop: '0px'
+      }, 300);
+
+
+      $('#contact').animate({
+        width: '96px'
+      }, 300);
+      $('#contact').animate({
+        paddingRight:'0',
+        paddingLeft:'0',
+        marginLeft:'0'
+      }, 400);
+      $('#contact').animate({
+        marginTop: '0px'
+      }, 300, function() {
+        $('header').animate({
+          marginTop: '0px'
+        }, 400);
+
+      });
+
+      number = 0;
     }
   });
+  $('#twitter').hover(function(){
+    $('#twitter').css('width','60px');
+    $('#twitter').css('height','60px');
 
-
-
-
-
-
-
-
-
-
-
+  });
 });
