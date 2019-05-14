@@ -17,7 +17,7 @@ nav{
   height:100px;
   width:100px;
   margin:auto;
-  
+
 }
 nav #container img{
   position:absolute;
@@ -161,7 +161,7 @@ form{
   margin:auto;
   margin-top:2%;
   cursor:pointer;
-  display:none;
+  
 }
 #sendInputInfo:hover{
   background-color:grey;
