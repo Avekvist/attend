@@ -6,6 +6,8 @@ $(document).ready(function() {
   $('.nav-button').css('width', '96px');
   $('.nav-button').css('display', 'none');
 
+  $('form').css('display', 'block');
+
 
   var menuNotActive=0;
 
@@ -192,6 +194,47 @@ $(document).ready(function() {
       }
     }
   });*/
+
+
+  var i =0;
+
+  function testInfo(phoneInput, re, textsvar) {
+          var OK = re.exec(phoneInput);
+
+          if (!OK) {
+                $(textsvar).css("color", "red");
+          } else {
+            $(textsvar).css("color", "green");
+            i++;
+          }
+        }
+
+
+
+          $("#phone").keyup(function(){
+            var re = /^[0]{1}[0-9]{6,15}$/;
+            testInfo($('#phone').val(),re,"#phone");
+          });
+
+
+          $("#mail").keyup(function(){
+            var rea = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            testInfo($('#mail').val(),rea,"#mail");
+          });
+
+          $("#firstName").keyup(function(){
+            var check = /^[a-zA-Z]+$/;
+            testInfo($('#firstName').val(),check ,"#firstName");
+
+          });
+
+          $("#lastName").keyup(function(){
+            var check2 = /^[a-zA-Z]+$/;
+            testInfo($('#lastName').val(),check2 ,"#lastName");
+
+
+          });
+
 
 
 });
