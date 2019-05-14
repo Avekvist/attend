@@ -9,13 +9,13 @@ $(document).ready(function() {
   $('form').css('display', 'block');
 
 
-  var menuNotActive=0;
+  var menuNotActive = 0;
 
   $('nav #container img').css('cursor', 'pointer');
   $('header').css('margin-top', '0px');
 
   $('#logo').click(function() {
-    if (menuNotActive==0) {
+    if (menuNotActive == 0) {
 
       $('.nav-button').css('display', 'block');
 
@@ -153,7 +153,7 @@ $(document).ready(function() {
       });
 
       menuNotActive = 0;
-        console.log(menuNotActive);
+      console.log(menuNotActive);
     }
   });
 
@@ -168,7 +168,7 @@ $(document).ready(function() {
   });
 
   $('#logo').mouseleave(function() {
-    if (menuNotActive==0 ) {
+    if (menuNotActive == 0) {
       $('#logo').animate({
         width: '96px',
         height: '96px',
@@ -196,44 +196,44 @@ $(document).ready(function() {
   });*/
 
 
-  var i =0;
+  var i = 0;
 
   function testInfo(phoneInput, re, textsvar) {
-          var OK = re.exec(phoneInput);
+    var OK = re.exec(phoneInput);
 
-          if (!OK) {
-                $(textsvar).css("color", "red");
-          } else {
-            $(textsvar).css("color", "green");
-            i++;
-          }
-        }
-
-
-
-          $("#phone").keyup(function(){
-            var re = /^[0]{1}[0-9]{6,15}$/;
-            testInfo($('#phone').val(),re,"#phone");
-          });
+    if (!OK) {
+      $(textsvar).css("color", "red");
+    } else {
+      $(textsvar).css("color", "green");
+      i++;
+    }
+  }
 
 
-          $("#mail").keyup(function(){
-            var rea = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            testInfo($('#mail').val(),rea,"#mail");
-          });
 
-          $("#firstName").keyup(function(){
-            var check = /^[a-zA-Z]+$/;
-            testInfo($('#firstName').val(),check ,"#firstName");
-
-          });
-
-          $("#lastName").keyup(function(){
-            var check2 = /^[a-zA-Z]+$/;
-            testInfo($('#lastName').val(),check2 ,"#lastName");
+  $("#phone").keyup(function() {
+    var re = /^[0]{1}[0-9]{6,15}$/;
+    testInfo($('#phone').val(), re, "#phone");
+  });
 
 
-          });
+  $("#mail").keyup(function() {
+    var rea = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    testInfo($('#mail').val(), rea, "#mail");
+  });
+
+  $("#firstName").keyup(function() {
+    var check = /^[a-zA-Z]+$/;
+    testInfo($('#firstName').val(), check, "#firstName");
+
+  });
+
+  $("#lastName").keyup(function() {
+    var check2 = /^[a-zA-Z]+$/;
+    testInfo($('#lastName').val(), check2, "#lastName");
+
+
+  });
 
 
 
