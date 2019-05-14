@@ -21,7 +21,7 @@ $(document).ready(function() {
 
       if ($(window).width() < 730) {
         $('header').animate({
-          marginTop: '475px'
+          marginTop: '525px'
         });
         $('#ide').animate({
           marginTop: '150px'
