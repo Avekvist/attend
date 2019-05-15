@@ -179,22 +179,7 @@ $(document).ready(function() {
 
     }
   });
-  /*$(document).on('scroll', function(){
 
-    if($(document).scrollTop() > 15 && $('#logo').width()!=120 ){
-      $('#logo').animate({
-        width:'70px',
-        height:'70px',
-      },100);
-    }else{
-      if($(document).scrollTop() < 15){
-        $('#logo').animate({
-          width:'96px',
-          height:'96px',
-        },100);
-      }
-    }
-  });*/
 
 
   var i = 0;
