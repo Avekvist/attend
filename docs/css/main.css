@@ -173,7 +173,6 @@ form {
 
 section {
   width: 350px;
-  height: 30rem;
   margin: auto;
   margin-top: 1%;
   background-color: none;
@@ -193,6 +192,7 @@ section h1 {
 
 section p {
   margin-top: -25%;
+  font-size: 120%;
 }
 
 section a {
