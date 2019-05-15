@@ -7,6 +7,7 @@ $(document).ready(function() {
   $('.nav-button').css('display', 'none');
 
   $('form').css('display', 'block');
+  $('#sendInputInfo').css('display', 'block');
 
 
   var menuNotActive = 0;

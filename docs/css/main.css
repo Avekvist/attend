@@ -150,6 +150,7 @@ form {
 .box {
   margin-top: 1%;
   font-size: 150%;
+
 }
 
 #sendInputInfo {
@@ -163,6 +164,7 @@ form {
   margin: auto;
   margin-top: 2%;
   cursor: pointer;
+  display:none;
 }
 
 #sendInputInfo:hover {
