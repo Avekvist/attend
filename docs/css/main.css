@@ -13,17 +13,16 @@ nav {
   margin: auto;
   height: 100px;
   width: 100px;
-  margin: auto;
+
 }
 
-nav #container img {
+#logo {
   position: absolute;
   background-color: white;
 }
 
 #ide {
   height: 96px;
-  ;
   width: 96px;
   position: absolute;
   border: 30px solid black;
@@ -110,7 +109,8 @@ nav #container img {
 
 header {
   width: 70%;
-  padding: 0, 5%;
+  padding-left: 5%;
+  padding-right: 5%;
   background-color: #575757;
   margin: auto;
   color: white;
@@ -130,8 +130,9 @@ header h1 {
 }
 
 .otherMain {
-  width: 100%;
+  width: 70%;
   margin-top: 5%;
+  margin:auto;
   border: 50px solid black;
   border-image: url(../imgs/border.png) 34% repeat;
   box-sizing: border-box;
@@ -176,7 +177,6 @@ section {
   width: 350px;
   margin: auto;
   margin-top: 1%;
-  background-color: none;
   border: 50px solid black;
   border-image: url(../imgs/border.png) 34% repeat;
   box-sizing: border-box;
