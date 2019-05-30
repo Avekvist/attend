@@ -1,0 +1,6 @@
+# Directories
+target/
+.VSCodeCounter/
+
+# Files
+Cargo.lock

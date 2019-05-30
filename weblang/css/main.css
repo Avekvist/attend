@@ -1,0 +1,188 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Oxygen Mono', monospace;
+	color: #000;
+}
+
+.container {
+	width: 100%;
+	margin: 0 auto;
+	display: grid;
+	grid-template-areas:
+	"header"
+	"nav"
+	"main"
+	"footer";
+	background-color: #99DEC0;
+}
+
+.container header {
+	grid-area: header;
+	text-align: center;
+	font-size: 2em;
+	padding: 2%;
+}
+
+.container nav {
+	padding: 0;
+	grid-area: nav;
+	background-color: #64917E;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.container nav .navbar {
+	display: inherit;
+	flex-direction: inherit;
+	background-color: inherit;
+	text-align: inherit;
+}
+
+.container nav .navbar a, .container nav #handle {
+	color: inherit;
+	text-decoration: none;
+	font-size: 1.5em;
+	cursor: pointer;
+	padding: 15px;
+}
+
+.container nav a:hover, .container nav #handle:hover {
+	background-color: #385146;
+}
+
+.container main {
+	grid-area: main;
+	padding: 2%;
+	text-align: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.container main > a, .container main > section {
+	margin: 1% auto;
+	padding: 2% 3%;
+	color: black;
+	background-color: rgb(255, 255, 255, 0.2);
+	width: 90%;
+	text-decoration: none;
+	box-shadow: 1px 1px 4px 4px rgba(0, 0, 0, 0.3);
+	font-size: 1.5em;
+}
+
+.container main > a:hover {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.container main .class a {
+	color: black;
+	text-decoration: none;
+}
+
+.container main section hr {
+	width: 60%;
+	border-top: 1px solid rgba(0, 0, 0, 0.3);
+	border-bottom: 0;
+}
+
+.container main section a {
+	padding: 1% 8%;
+}
+
+.container main section a:hover {
+	background-color: rgba(255, 255, 255, 0.3);
+	box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.container main a {
+	color: black;
+	text-decoration: none;
+}
+
+.container main section form section {
+	margin: auto;
+	width: 80%;
+	text-align: left;
+}
+
+.container main section form input[type=text], .container main section form input[type=password] {
+	padding: 1% 2%;
+	font-size: 1em;
+	border: none;
+}
+
+.container main section form section input[type=radio] {
+	border: none;
+	width: 1.3em;
+	height: 1.3em;
+}
+
+.container main section form input[type=submit] {
+	border: none;
+	font-size: 1.5em;
+	margin-top: 0;
+	margin-bottom: 20px;
+	padding: 2% 5%;
+	border-radius: 50px;
+	background-color: #FAFAFA;
+	cursor: pointer;
+}
+
+.container main section form input[type=submit]:hover {
+	background-color: #DEDEDE;
+}
+
+.container main section form textarea {
+	padding: 1%;
+	font-size: 1em;
+}
+
+.container footer {
+	grid-area: footer;
+	background-color: #64917E;
+	padding: 2%;
+	text-align: center;
+	font-size: 1.5em;
+}
+
+@media screen and (min-width: 960px) {
+	.container {
+		width: 80%;
+	}
+	
+	.container nav {
+		flex-direction: row;
+	}
+
+	.container nav .navbar {
+		display: inherit;
+		margin: auto;
+	}
+
+	.container nav .navbar a {
+		padding: 20px;
+	}
+
+	.container nav #handle {
+		display: none;
+		width: 0;
+	}
+
+	.container main > a, .container main > section {
+		width: 35%;
+	}
+
+	.container main > .tags, .container main > .students, .container main > .index, .container main > .support {
+		width: 80%;
+	}
+
+	.container main > .attendance {
+		width: 45%;
+	}
+	
+	.container main section form section {
+		width: 35%;
+	}
+}
